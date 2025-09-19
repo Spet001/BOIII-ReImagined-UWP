@@ -12,7 +12,13 @@
 
 #include "steam_proxy.hpp"
 #include "scheduler.hpp"
+#include "uwp_bridge.hpp"
 
+void component::post_load() {
+    if (uwp_bridge::is_active()) {
+        ALOG("[steam_proxy] uwp_bridge is active -> skipping steam_proxy init\n", "");
+        return;
+    }
 namespace steam_proxy {
     namespace {
         utils::nt::library steam_client_module{};

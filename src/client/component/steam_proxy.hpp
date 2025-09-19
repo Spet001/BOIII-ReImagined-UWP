@@ -1,7 +1,13 @@
 #pragma once
 
 #include <utils/nt.hpp>
+#include "uwp_bridge.hpp"
 
+void component::post_load() {
+    if (uwp_bridge::is_active()) {
+        ALOG("[steam_proxy] uwp_bridge is active -> skipping steam_proxy init\n", "");
+        return;
+    }
 namespace steam_proxy {
     const utils::nt::library &get_overlay_module();
 

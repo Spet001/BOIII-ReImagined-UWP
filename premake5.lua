@@ -298,7 +298,8 @@ project "client"
 
 	files {"./src/client/**.rc", "./src/client/**.hpp", "./src/client/**.cpp", "./src/client/resources/**.*"}
 
-	includedirs {"./src/client", "./src/common", "%{prj.location}/src"}
+	includedirs {"./src/client", "./src/common", "%./src", "./src/client",
+    "./src/common","%{prj.location}/src","./src/client/steam","./deps/steam"}
 
 	resincludedirs {"$(ProjectDir)src"}
 
